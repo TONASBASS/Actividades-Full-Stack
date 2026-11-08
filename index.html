@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatiuh | Automatización Industrial</title>
+
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+
+
+<body>
+
+    <!-- Encabezado -->
+<header class="encabezado">
+
+    <img src="imagenes/banner-automatiuh-1.png"
+        alt="AUTOMATIUH AUTOMATIZACIÓN INDUSTRIAL"
+        class="logo">
+
+    <div class="info-empresa">
+
+        <section>
+            <h2>¿Quiénes Somos?</h2>
+
+            <p>
+                Somos una empresa especializada en automatización industrial,
+                enfocada en el desarrollo de soluciones tecnológicas para optimizar
+                procesos productivos mediante sistemas de control, monitoreo e
+                integración industrial.
+            </p>
+        </section>
+
+        <section>
+            <h2>Misión</h2>
+
+            <p>
+                Proporcionar soluciones innovadoras de automatización industrial
+                que permitan a nuestros clientes aumentar la eficiencia,
+                productividad y seguridad de sus procesos.
+            </p>
+        </section>
+
+        <section>
+            <h2>Visión</h2>
+
+            <p>
+                Ser una empresa líder en automatización industrial reconocida
+                por la excelencia de sus servicios, innovación tecnológica
+                y compromiso con la industria.
+            </p>
+        </section>
+
+    </div>
+
+</header>
+
+    <main>
+
+        <!-- Proyectos -->
+        <section id="proyectos">
+            <h2>Proyectos Destacados</h2>
+
+            <div class="contenedor-proyectos">
+
+                <article class="proyecto">
+                    <img src="imagenes/BLDC-Motor-Stator-Coil-Production-Line.jpg"
+                        alt="Sistema de automatización para línea de producción industrial">
+
+                    <h3>Automatización de Línea de Producción</h3>
+
+                    <p>
+                        Implementación de controladores PLC y sensores industriales
+                        para optimizar la producción y reducir tiempos de operación.
+                    </p>
+
+                    <a href="#" aria-label="Más información sobre automatización de línea de producción">
+                        Ver más
+                    </a>
+                </article>
+
+                <article class="proyecto">
+                    <img src="imagenes/scada.jpg"
+                        alt="Sistema SCADA para supervisión de procesos industriales">
+
+                    <h3>Sistema SCADA de Monitoreo </h3>
+
+                    <p>
+                        Desarrollo de un sistema SCADA para supervisar variables
+                        críticas en tiempo real y generar reportes automáticos.
+                    </p>
+
+                    <a href="#" aria-label="Más información sobre sistema SCADA">
+                        Ver más
+                    </a>
+                </article>
+
+                <article class="proyecto">
+                    <img src="imagenes/iiot4.jpg"
+                        alt="Implementación de tecnologías Industria 4.0 e Internet de las Cosas">
+
+                    <h3>Industria 4.0 e IIoT</h3>
+
+                    <p>
+                        Integración de sensores inteligentes y monitoreo remoto
+                        para mejorar la toma de decisiones industriales.
+                    </p>
+
+                    <a href="#" aria-label="Más información sobre Industria 4.0">
+                        Ver más
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+                <!-- Gestor de Tareas -->
+        <section id="tareas">
+
+            <h2>Gestor de Actividades</h2>
+
+            <div class="contenedor-tareas">
+
+                <input
+                    type="text"
+                    id="nuevaTarea"
+                    placeholder="Ingrese una nueva actividad">
+
+                <button id="btnAgregar">
+                    Agregar Tarea
+                </button>
+
+                <p id="mensajeError"></p>
+
+                <ul id="listaTareas"></ul>
+
+            </div>
+
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto">
+            <h2>Contáctanos</h2>
+
+            <form action="#" method="post">
+
+                <div class="campo">
+                    <label for="nombre">Nombre completo</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Ingresa tu nombre"
+                        required>
+                </div>
+
+                <div class="campo">
+                    <label for="correo">Correo electrónico</label>
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="correo@ejemplo.com"
+                        required>
+                </div>
+
+                <div class="campo">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea
+                        id="mensaje"
+                        name="mensaje"
+                        rows="5"
+                        placeholder="Escribe tu mensaje"
+                        required></textarea>
+                </div>
+
+                <button type="submit">Enviar Mensaje</button>
+
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="pie-pagina">
+
+        <h3 class="titulo-footer">Síguenos</h3>
+
+       <div class="redes">
+
+    <a href="https://www.facebook.com"
+       target="_blank"
+       rel="noopener noreferrer">
+       Facebook
+    </a>
+
+    <a href="https://www.instagram.com"
+       target="_blank"
+       rel="noopener noreferrer">
+       Instagram
+    </a>
+
+    <a href="https://www.linkedin.com"
+       target="_blank"
+       rel="noopener noreferrer">
+       LinkedIn
+    </a>
+
+</div>
+
+        <p>&copy; 2026 Automatiuh. Todos los derechos reservados.</p>
+
+    </footer>
+
+<script src="app.js"></script>    
+
+</body>
+
+</html>
