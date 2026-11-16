@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import conectarDB from "./config/db.js";
 
@@ -14,6 +16,10 @@ dotenv.config();
 const app = express();
 
 const PORT = process.env.PORT || 3000;
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 // =========================
 // CONEXION MONGODB
@@ -36,7 +42,7 @@ app.use( express.static( "public" ) );
 // RUTA PRINCIPAL
 // =========================
 
-app.get( "/",( req,res ) => {
+/*app.get( "/",( req,res ) => {
 
     res.status(200).json({
 
@@ -47,6 +53,16 @@ app.get( "/",( req,res ) => {
         mensaje:"Servidor funcionando correctamente"
 
     });
+
+}); */
+
+app.get( "/",( req,res ) => {
+
+    res.sendFile(
+
+        path.join( __dirname,"public","index.html" )
+
+    );
 
 });
 
