@@ -86,12 +86,18 @@ app.use( errorHandler );
 // INICIAR SERVIDOR
 // =========================
 
-app.listen( PORT,() => {
+if ( process.env.NODE_ENV !== "production" ) {
 
-    console.log(
+    app.listen( PORT,() => {
 
-        `Servidor ejecutándose en http://localhost:${PORT}`
+        console.log(
 
-    );
+            `Servidor ejecutándose en http://localhost:${PORT}`
 
-});
+        );
+
+    });
+
+}
+
+export default app;
