@@ -1,63 +1,97 @@
 import express from "express";
-import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import cors from "cors";
+
+import conectarDB from "./config/db.js";
 
 import authRoutes from "./routes/authRoutes.js";
-import tareasRoutes from "./routes/tareasRoutes.js";
+import productoRoutes from "./routes/productoRoutes.js";
 
 import errorHandler from "./middleware/errorMiddleware.js";
 
+dotenv.config();
+
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+// =========================
+// CONEXION MONGODB
+// =========================
 
-// Ruta principal
-app.get("/", (req, res) => {
+conectarDB();
 
-    res.status(200).json({ nombre: "API de Tareas", version: "1.0.0",
-                           mensaje: "API funcionando correctamente"});
+// =========================
+// MIDDLEWARES
+// =========================
+
+app.use( cors() );
+
+app.use( express.json() );
+
+app.use( express.urlencoded({ extended:true }) );
+
+app.use( express.static( "public" ) );
+// =========================
+// RUTA PRINCIPAL
+// =========================
+
+app.get( "/",( req,res ) => {
+
+    res.status(200).json({
+
+        nombre:"Automatiuh API",
+
+        version:"1.0.0",
+
+        mensaje:"Servidor funcionando correctamente"
+
+    });
 
 });
 
-// Rutas
-app.use("/", authRoutes);
+// =========================
+// RUTAS AUTH
+// =========================
 
-app.use("/tareas", tareasRoutes);
+app.use( "/api/auth",authRoutes );
 
-// Error 400 de prueba
-app.get("/error400", (req, res) => {
+// =========================
+// RUTAS PRODUCTOS
+// =========================
 
-    res.status(400).json({ mensaje: "Solicitud incorrecta" });
+app.use( "/api/productos",productoRoutes );
 
-});
+// =========================
+// ERROR 404
+// =========================
 
-// Error 500 de prueba
-app.get("/error500", (req, res, next) => {
-
-    const error = new Error( "Error interno de prueba" );
-
-    next(error);
-
-});
-
-// Error 404
-app.use((req, res, next) => {
+app.use(( req,res,next ) => {
 
     const error = new Error( "Ruta no encontrada" );
 
     error.status = 404;
 
-    next(error);
+    next( error );
 
 });
 
-// Middleware global de errores
-app.use(errorHandler);
+// =========================
+// MIDDLEWARE ERRORES
+// =========================
 
-// Iniciar servidor
-app.listen(PORT, () => {
+app.use( errorHandler );
 
-    console.log( `Servidor ejecutándose en http://localhost:${PORT}` );
+// =========================
+// INICIAR SERVIDOR
+// =========================
+
+app.listen( PORT,() => {
+
+    console.log(
+
+        `Servidor ejecutándose en http://localhost:${PORT}`
+
+    );
 
 });

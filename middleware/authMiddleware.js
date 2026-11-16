@@ -1,22 +1,22 @@
 import jwt from "jsonwebtoken";
 
-const verificarToken = (req,res,next) => {
+const verificarToken = ( req,res,next ) => {
 
-    const token = req.header("Authorization");
+    const token = req.header( "Authorization" );
 
-    if (!token) {
+    if ( !token ) {
 
-        const error = new Error("Acceso denegado. Token no proporcionado.");
+        const error = new Error( "Acceso denegado. Token no proporcionado." );
 
         error.status = 401;
 
-        return next(error);
+        return next( error );
 
     }
 
     try {
 
-        const usuario = jwt.verify(token,"clave_secreta");
+        const usuario = jwt.verify( token,process.env.JWT_SECRET );
 
         req.usuario = usuario;
 
@@ -24,11 +24,11 @@ const verificarToken = (req,res,next) => {
 
     } catch (error) {
 
-        const tokenError = new Error("Token inválido o expirado.");
+        const tokenError = new Error( "Token inválido o expirado." );
 
         tokenError.status = 401;
 
-        return next(tokenError);
+        return next( tokenError );
 
     }
 

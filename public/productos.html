@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Automatiuh | Gestión de Productos</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+    <header class="encabezado-app">
+
+    <img
+        src="imagenes/banner-automatiuh-1.png"
+        alt="Automatiuh Automatización Industrial"
+        class="logo-dashboard"
+    >
+
+    <div class="barra-superior">
+
+        <div class="titulo-dashboard">
+
+            <h2>Administración de inventario y productos de automatización</h2>
+
+        </div>
+
+       
+
+    </div>
+
+</header>
+
+    <main>
+
+        <!-- FORMULARIO PRODUCTOS -->
+
+        <section class="seccion-formulario">
+
+            <h2>Gestión de Productos</h2>
+
+            <form id="formProducto">
+
+                <input
+                    type="hidden"
+                    id="productoId"
+                >
+
+                <div class="campo">
+
+                    <label for="nombre">
+
+                        Nombre
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        placeholder="PLC Siemens S7-1200"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="descripcion">
+
+                        Descripción
+
+                    </label>
+
+                    <textarea
+                        id="descripcion"
+                        rows="4"
+                        placeholder="Descripción del producto"
+                        required
+                    ></textarea>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="categoria">
+
+                        Categoría
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="categoria"
+                        placeholder="PLC"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="precio">
+
+                        Precio
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="precio"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="stock">
+
+                        Stock
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="stock"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="imagen">
+
+                        Imagen
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="imagen"
+                        placeholder="Imagenes/DELTA-DVP.png"
+                    >
+
+                </div>
+
+                <p id="mensajeError"></p>
+
+                <button type="submit">
+
+                    Guardar Producto
+
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- PRODUCTOS -->
+
+        <section class="seccion-productos">
+
+            <h2>Productos Registrados</h2>
+
+            <div id="contenedorProductos">
+
+            </div>
+
+        </section>
+
+        </div>
+
+        <button id="btnLogout">
+
+            Cerrar Sesión
+
+        </button>
+
+    </div>
+
+        
+
+    </main>
+
+    <script src="js/productos.js"></script>
+
+</body>
+
+</html>
