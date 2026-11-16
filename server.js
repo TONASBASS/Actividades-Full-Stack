@@ -21,47 +21,52 @@ const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
 
+console.log("VERSION RAILWAY 16-11-2026");
+
+console.log("=================================");
+console.log("INICIANDO APLICACION");
+console.log("NODE_ENV:", process.env.NODE_ENV);
+console.log("PORT:", process.env.PORT);
+console.log(
+    "MONGODB_URI:",
+    process.env.MONGODB_URI ? "CONFIGURADA" : "NO CONFIGURADA"
+);
+console.log(
+    "JWT_SECRET:",
+    process.env.JWT_SECRET ? "CONFIGURADA" : "NO CONFIGURADA"
+);
+console.log("=================================");
+
 // =========================
 // CONEXION MONGODB
 // =========================
 
 conectarDB();
 
+console.log("PASO 1 - MongoDB solicitada");
+
 // =========================
 // MIDDLEWARES
 // =========================
 
-app.use( cors() );
+app.use(cors());
 
-app.use( express.json() );
+app.use(express.json());
 
-app.use( express.urlencoded({ extended:true }) );
+app.use(express.urlencoded({ extended: true }));
 
-app.use( express.static( "public" ) );
+app.use(express.static("public"));
+
+console.log("PASO 2 - Middlewares cargados");
+
 // =========================
 // RUTA PRINCIPAL
 // =========================
 
-/*app.get( "/",( req,res ) => {
-
-    res.status(200).json({
-
-        nombre:"Automatiuh API",
-
-        version:"1.0.0",
-
-        mensaje:"Servidor funcionando correctamente"
-
-    });
-
-}); */
-
-app.get( "/",( req,res ) => {
+app.get("/", (req, res) => {
 
     res.sendFile(
-
-        path.join( __dirname,"public","index.html" )
-
+        path.join(__dirname, "public", "index.html")
     );
 
 });
@@ -70,25 +75,27 @@ app.get( "/",( req,res ) => {
 // RUTAS AUTH
 // =========================
 
-app.use( "/api/auth",authRoutes );
+app.use("/api/auth", authRoutes);
 
 // =========================
 // RUTAS PRODUCTOS
 // =========================
 
-app.use( "/api/productos",productoRoutes );
+app.use("/api/productos", productoRoutes);
+
+console.log("PASO 3 - Rutas cargadas");
 
 // =========================
 // ERROR 404
 // =========================
 
-app.use(( req,res,next ) => {
+app.use((req, res, next) => {
 
-    const error = new Error( "Ruta no encontrada" );
+    const error = new Error("Ruta no encontrada");
 
     error.status = 404;
 
-    next( error );
+    next(error);
 
 });
 
@@ -96,24 +103,19 @@ app.use(( req,res,next ) => {
 // MIDDLEWARE ERRORES
 // =========================
 
-app.use( errorHandler );
+app.use(errorHandler);
+
+console.log("PASO 4 - Middleware de errores cargado");
 
 // =========================
 // INICIAR SERVIDOR
 // =========================
 
-if ( process.env.NODE_ENV !== "production" ) {
+app.listen(PORT, "0.0.0.0", () => {
 
-    app.listen( PORT,() => {
+    console.log("=================================");
+    console.log(`Servidor ejecutándose en puerto ${PORT}`);
+    console.log("Servidor escuchando correctamente");
+    console.log("=================================");
 
-        console.log(
-
-            `Servidor ejecutándose en http://localhost:${PORT}`
-
-        );
-
-    });
-
-}
-
-export default app;
+});
